@@ -21,18 +21,18 @@
 
         $conexao = RetornaConexao();
 
-        $titulo = 'titulo';
-        $autor = 'autor';
-        $classificacao = 'classificacao';
+        $titulo = 'Titulo';
+        $codigoBarras = 'Ean';
+        $genero = 'Genero';
         /*TODO-1: Adicione uma variavel para cada coluna */
 
 
         $sql =
             'SELECT ' . $titulo .
-            '     , ' . $autor .
-            '     , ' . $classificacao .
+            '     , ' . $codigoBarras .
+            '     , ' . $genero .
             /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM livros';
+            '  FROM livro';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -46,9 +46,9 @@
             '<table>' .
             '    <tr>' .
             '        <th>' . $titulo . '</th>' .
-            '        <th>' . $autor . '</th>' .
+            '        <th>' . $codigoBarras . '</th>' .
             /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
-            '        <th>' . $classificacao . '</th>' .
+            '        <th>' . $genero . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -59,9 +59,9 @@
                 echo '<tr>';
 
                 echo '<td>' . $registro[$titulo] . '</td>' .
-                    '<td>' . $registro[$autor] . '</td>' .
+                    '<td>' . $registro[$codigoBarras] . '</td>' .
                     /* TODO-4: Adicione a tabela os novos registros. */
-                    '<td>' . $registro[$classificacao] . '</td>';
+                    '<td>' . $registro[$genero] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
