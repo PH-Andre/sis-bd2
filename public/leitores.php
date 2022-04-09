@@ -13,7 +13,7 @@
 
 <body>
     <div class="content">
-        <h1>Bibliófilo's</h1>
+        <h1>Lista de usuarios</h1>
 
 
         <?php
@@ -21,10 +21,10 @@
 
         $conexao = RetornaConexao();
 
-        $titulo = 'Titulo';
-        $codigoBarras = 'Ean';
-        $genero = 'Genero';
-        $edicao = 'Edicao';
+        $titulo = 'leitor_nome';
+        $codigoBarras = 'leitor_cpf';
+        $genero = 'leitor_idade';
+        
         /*TODO-1: Adicione uma variavel para cada coluna */
 
 
@@ -32,9 +32,8 @@
             'SELECT ' . $titulo .
             '     , ' . $codigoBarras .
             '     , ' . $genero .
-            '     , ' . $edicao .
-            /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM livro';
+           /*TODO-2: Adicione cada variavel a consulta abaixo */
+            '  FROM leitor';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -47,11 +46,10 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $titulo . '</th>' .
-            '        <th>' . $codigoBarras . '</th>' .
+            '        <th>' . 'Nome' . '</th>' .
+            '        <th>' . 'CPF' . '</th>' .
             /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
-            '        <th>' . $edicao . '</th>' .
-            '        <th>' . $genero . '</th>' .
+           '        <th>' . 'Data de Nascimento' . '</th>' .
             
             '    </tr>';
 
@@ -65,7 +63,6 @@
                 echo '<td>' . $registro[$titulo] . '</td>' .
                     '<td>' . $registro[$codigoBarras] . '</td>' .
                     /* TODO-4: Adicione a tabela os novos registros. */
-                    '<td>' . $registro[$edicao] . '</td>' .
                     '<td>' . $registro[$genero] . '</td>';
                 echo '</tr>';
             }

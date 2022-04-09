@@ -13,7 +13,7 @@
 
 <body>
     <div class="content">
-        <h1>Bibliófilo's</h1>
+        <h1>Leituras Realizadas</h1>
 
 
         <?php
@@ -21,10 +21,11 @@
 
         $conexao = RetornaConexao();
 
-        $titulo = 'Titulo';
-        $codigoBarras = 'Ean';
-        $genero = 'Genero';
-        $edicao = 'Edicao';
+        $titulo = 'inicio_leitura';
+        $codigoBarras = 'final_leitura';
+        $genero = 'classificacao_livro';
+        $livro = 'leitura_livro';
+        $leitor ='leitura_leitor';
         /*TODO-1: Adicione uma variavel para cada coluna */
 
 
@@ -32,9 +33,10 @@
             'SELECT ' . $titulo .
             '     , ' . $codigoBarras .
             '     , ' . $genero .
-            '     , ' . $edicao .
-            /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM livro';
+            '     , ' . $livro .
+            '     , ' . $leitor .
+           /*TODO-2: Adicione cada variavel a consulta abaixo */
+            '  FROM leitura_efetivadas';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -47,12 +49,13 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $titulo . '</th>' .
-            '        <th>' . $codigoBarras . '</th>' .
-            /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
-            '        <th>' . $edicao . '</th>' .
-            '        <th>' . $genero . '</th>' .
+            '        <th>' . 'Inicio da leitura' . '</th>' .
+            '        <th>' . 'Termino da leitura' . '</th>' .
+            '        <th>' . 'Nota' . '</th>' .
+            '        <th>' . 'Livro' . '</th>' .
             
+            /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
+            '        <th>' . 'Leitor' . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -64,9 +67,10 @@
 
                 echo '<td>' . $registro[$titulo] . '</td>' .
                     '<td>' . $registro[$codigoBarras] . '</td>' .
+                    '<td>' . $registro[$genero] . '</td>' .
+                    '<td>' . $registro[$livro] . '</td>' .
                     /* TODO-4: Adicione a tabela os novos registros. */
-                    '<td>' . $registro[$edicao] . '</td>' .
-                    '<td>' . $registro[$genero] . '</td>';
+                    '<td>' . $registro[$leitor] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
