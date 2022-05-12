@@ -21,7 +21,7 @@
 
         $conexao = RetornaConexao();
 
-        $titulo = 'leitor_1';
+        $titulo = 'leitor1';
         $codigoBarras = 'leitor2';
         
         
@@ -29,11 +29,10 @@
 
 
         $sql =
-            'SELECT ' . $titulo .
-            '     , ' . $codigoBarras .
-           
-           /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM amizade_leitor';
+            'select leitor.leitor_nome leitor1, l2.leitor_nome leitor2
+            from amizade_leitor
+            inner join leitor on (amizade_leitor.leitor_1 = leitor.leitor_ID )
+            inner join leitor l2 on l2.leitor_ID = amizade_leitor.leitor2;';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -46,8 +45,8 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . 'Leitor 1' . '</th>' .
-            '        <th>' . 'Leitor 2' . '</th>' .
+            '        <th>' . 'O leitor' . '</th>' .
+            '        <th>' . '    é amigo de:' . '</th>' .
             /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
          
             
